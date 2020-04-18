@@ -27,6 +27,8 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.persist(obj);
+        connection.flush();
+        connection.refresh(obj);
 
         transaction.commit();
         return obj;
