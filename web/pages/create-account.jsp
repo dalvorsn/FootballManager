@@ -21,15 +21,7 @@
                                 <input type="text" class="form-control form-control-user" name="login" placeholder="Enter your login">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" name="email" placeholder="Enter your email Address">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-                                </div>
+                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <input type="url" class="form-control form-control-user" name="profile_picture" placeholder="Paste your picture (URL only)">

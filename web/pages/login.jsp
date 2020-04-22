@@ -20,10 +20,10 @@
                                 <form action="${context}/router" class="user" method="POST">
                                     <input type="hidden" name="action" value="login-check">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" placeholder="Enter your login">
+                                        <input type="text" class="form-control form-control-user" name="login" placeholder="Enter your login">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
@@ -31,6 +31,9 @@
                                             <label class="custom-control-label" for="customCheck">Remember Me</label>
                                         </div>
                                     </div>
+                                    <c:if test="${error != null}">
+                                        ${error}
+                                    </c:if>
                                     <button class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>

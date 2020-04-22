@@ -15,12 +15,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.domain.User;
 import servlet.action.IAction;
 import servlet.action.db.CreateAccountSaveAction;
 import servlet.action.db.LoginCheckAction;
+import servlet.action.db.LogoutAction;
+import servlet.action.view.ChampionshipViewAction;
 import servlet.action.view.CreateAccountViewAction;
 import servlet.action.view.HomeViewAction;
 import servlet.action.view.LoginViewAction;
+import servlet.action.view.PlayerViewAction;
+import servlet.action.view.RankViewAction;
+import servlet.action.view.TeamViewAction;
 
 /**
  *
@@ -36,10 +42,20 @@ public class Router extends HttpServlet {
         actionsMap.put(null, LoginViewAction.class);
         actionsMap.put("login", LoginViewAction.class);
         actionsMap.put("login-check", LoginCheckAction.class);
+        actionsMap.put("logout", LogoutAction.class);
+
         actionsMap.put("create-account", CreateAccountViewAction.class);
         actionsMap.put("create-account-save", CreateAccountSaveAction.class);
 
         actionsMap.put("home", HomeViewAction.class);
+
+        actionsMap.put("team", TeamViewAction.class);
+
+        actionsMap.put("championship", ChampionshipViewAction.class);
+
+        actionsMap.put("player", PlayerViewAction.class);
+
+        actionsMap.put("rank", RankViewAction.class);
     }
 
     public IAction getAction(String actionName) throws InstantiationException, IllegalAccessException {
@@ -64,6 +80,13 @@ public class Router extends HttpServlet {
 
         try {
             IAction action = getAction(actionName);
+            User user = (User) request.getSession().getAttribute("user");
+            if (user != null) {
+                request.setAttribute("user", user);
+            } else if (action.requiresAuth()) {
+                new LoginViewAction().execute(request, response);
+                return;
+            }
             action.execute(request, response);
 
         } catch (Exception ex) {
