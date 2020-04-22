@@ -23,7 +23,7 @@ public class CreateAccountViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("pages/create-account.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=create-account");
 
         rd.forward(request, response);
     }

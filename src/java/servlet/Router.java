@@ -6,7 +6,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +19,7 @@ import servlet.action.IAction;
 import servlet.action.db.CreateAccountSaveAction;
 import servlet.action.db.LoginCheckAction;
 import servlet.action.view.CreateAccountViewAction;
+import servlet.action.view.HomeViewAction;
 import servlet.action.view.LoginViewAction;
 
 /**
@@ -38,6 +38,8 @@ public class Router extends HttpServlet {
         actionsMap.put("login-check", LoginCheckAction.class);
         actionsMap.put("create-account", CreateAccountViewAction.class);
         actionsMap.put("create-account-save", CreateAccountSaveAction.class);
+
+        actionsMap.put("home", HomeViewAction.class);
     }
 
     public IAction getAction(String actionName) throws InstantiationException, IllegalAccessException {

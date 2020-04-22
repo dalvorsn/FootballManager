@@ -1,101 +1,50 @@
-<%--
-    Document   : create-account
-    Created on : 10/04/2020, 18:24:56
-    Author     : dalvo
---%>
-<%--
-    Document   : login
-    Created on : 10/04/2020, 16:49:30
-    Author     : dalvo
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html class="white darken-2">
-    <head>
-        <title>FIFA - Create Account</title>
-        <jsp:include page="/includes/header.jsp" />
-        <style>
-            html {
-                height: 100%;
-            }
+<div class="container">
 
-            body {
-                background-image: url(${context}/assets/images/login-background.jpg) ;
-                background-position: center center;
-                background-repeat:  no-repeat;
-                background-attachment: fixed;
-                background-size:  cover;
-                background-color: #999;
-                margin: 0;
-                padding: 0;
-                font-family: exo, sans-serif;
-                height: 100vh;
-                width: 100%;
-            }
-
-            #formContainer {
-                margin-top: 10vh;
-            }
-
-            #logoForm {
-                height: 80px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="row">
-            <div id="formContainer" class="col s12 m10 l6 xl4 offset-m1 offset-l3 offset-xl4 center-align">
-                <div class="card-panel grey darken-3">
-                    <form action="router" method="POST">
-                        <input type="hidden" name="action" value="create-account-save">
-                        <div class="row center-align">
-                            <img id="logoForm" src="${context}/assets/images/logo.png" />
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input placeholder="Enter your name" id="name" name="name" type="text" class="validate white-text" required>
-                                <label for="name" class="white-text">Name</label>
+                        <form action="${context}/router" class="user">
+                            <input type="hidden" name="action" value="create-account-save">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="name" placeholder="Enter you name">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input placeholder="Enter your login" id="login" name="login" type="text" class="validate white-text" required>
-                                <label for="login" class="white-text">Login</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" name="login" placeholder="Enter your login">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input placeholder="Enter your password" id="password" name="password" type="password" class="validate white-text" required>
-                                <label for="password" class="white-text">Password</label>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" name="email" placeholder="Enter your email Address">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input placeholder="Only URL" id="profile_picture" type="url" name="url" class="validate white-text" required>
-                                <label for="url" class="white-text">Profile picture</label>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <button class="btn waves-effect orange lighten-1 wave-light z-depth-5" type="submit">
-                                Create Account
+                            <div class="form-group">
+                                <input type="url" class="form-control form-control-user" name="profile_picture" placeholder="Paste your picture (URL only)">
+                            </div>
+                            <button class="btn btn-primary btn-user btn-block">
+                                Register Account
                             </button>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="${context}/router?action=login">Already have an account? Login!</a>
                         </div>
-                        <br>
-                        <div class="row">
-                            <a href="${context}/router?action=login" >Login</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <jsp:include page="/includes/js-includes.jsp" />
-        <script>
-            (function(jQuery) {
-
-            })(jQuery);
-        </script>
-    </body>
-</html>
+    </div>
+</div>

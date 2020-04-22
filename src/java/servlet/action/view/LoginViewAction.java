@@ -23,7 +23,7 @@ public class LoginViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("pages/login.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=login");
 
         rd.forward(request, response);
     }
