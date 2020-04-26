@@ -21,7 +21,7 @@
                                 <input type="text" class="form-control form-control-user" name="login" placeholder="Enter your login">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <input type="url" class="form-control form-control-user" name="profile_picture" placeholder="Paste your picture (URL only)">

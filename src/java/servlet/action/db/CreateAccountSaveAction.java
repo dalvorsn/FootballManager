@@ -28,8 +28,8 @@ public class CreateAccountSaveAction implements IAction {
         String name = request.getParameter("name");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        String url = request.getParameter("url");
-
+        String url = request.getParameter("profile_picture");
+        
         User user = new User();
         user.setName(name);
         user.setLogin(login);
