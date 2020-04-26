@@ -18,13 +18,18 @@ import javax.servlet.http.HttpServletResponse;
 import model.domain.User;
 import servlet.action.IAction;
 import servlet.action.db.CreateAccountSaveAction;
+import servlet.action.db.CreatePlayerSaveAction;
+import servlet.action.db.DeletePlayerSaveAction;
+import servlet.action.db.EditPlayerSaveAction;
 import servlet.action.db.LoginCheckAction;
 import servlet.action.db.LogoutAction;
 import servlet.action.view.ChampionshipViewAction;
 import servlet.action.view.CreateAccountViewAction;
+import servlet.action.view.CreatePlayerViewAction;
+import servlet.action.view.EditPlayerViewAction;
 import servlet.action.view.HomeViewAction;
 import servlet.action.view.LoginViewAction;
-import servlet.action.view.PlayerViewAction;
+import servlet.action.view.PlayersViewAction;
 import servlet.action.view.RankViewAction;
 import servlet.action.view.TeamViewAction;
 
@@ -53,7 +58,12 @@ public class Router extends HttpServlet {
 
         actionsMap.put("championship", ChampionshipViewAction.class);
 
-        actionsMap.put("player", PlayerViewAction.class);
+        actionsMap.put("players", PlayersViewAction.class);
+        actionsMap.put("create-player", CreatePlayerViewAction.class);
+        actionsMap.put("edit-player", EditPlayerViewAction.class);
+        actionsMap.put("create-player-save", CreatePlayerSaveAction.class);
+        actionsMap.put("edit-player-save", EditPlayerSaveAction.class);
+        actionsMap.put("delete-player", DeletePlayerSaveAction.class);
 
         actionsMap.put("rank", RankViewAction.class);
     }
@@ -80,6 +90,10 @@ public class Router extends HttpServlet {
 
         try {
             IAction action = getAction(actionName);
+            if(action == null) {
+                throw new Exception("Page not found.");
+            }
+            
             User user = (User) request.getSession().getAttribute("user");
             if (user != null) {
                 request.setAttribute("user", user);

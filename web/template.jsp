@@ -40,7 +40,7 @@
 
                     <hr class="sidebar-divider my-0">
 
-                    <li class="nav-item">
+                    <li class="nav-item <c:if test="${activeMenu == 'home'}">active</c:if>">
                         <a class="nav-link" href="${context}/router?action=home">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Home</span>
@@ -52,29 +52,29 @@
                     <div class="sidebar-heading">
                         Register
                     </div>
-
-                    <li class="nav-item">
+                    
+                    <li class="nav-item <c:if test="${activeMenu == 'team'}">active</c:if>">
                         <a class="nav-link" href="${context}/router?action=team">
                             <i class="fas fa-fw fa-users"></i>
                             <span>Teams</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item <c:if test="${activeMenu == 'championship'}">active</c:if>">
                         <a class="nav-link" href="${context}/router?action=championship">
                             <i class="fas fa-fw fa-trophy"></i>
                             <span>Championships</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="${context}/router?action=player">
+                    <li class="nav-item <c:if test="${activeMenu == 'player'}">active</c:if>">
+                        <a class="nav-link" href="${context}/router?action=players">
                             <i class="fas fa-fw fa-running"></i>
                             <span>Players</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item <c:if test="${activeMenu == 'rank'}">active</c:if>">
                         <a class="nav-link" href="${context}/router?action=rank">
                             <i class="fas fa-fw fa-chart-area"></i>
                             <span>Ranks</span>
@@ -173,6 +173,18 @@
 
         <!-- Custom scripts for all pages-->
         <script src="assets/js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="${context}/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="${context}/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        
+        <script>
+            $('#dataTable').DataTable();
+            
+            $(".deleteButton").click(function(){
+                $("#deleteAction").attr("href", $(this).data("action"));
+            });
+        </script>
 
     </body>
 

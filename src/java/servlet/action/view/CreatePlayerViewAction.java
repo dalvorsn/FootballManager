@@ -5,16 +5,20 @@
  */
 package servlet.action.view;
 
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.TeamDAO;
+import model.domain.Team;
+import model.domain.e.ESoccerPosition;
 import servlet.action.IAction;
 
 /**
  *
  * @author dalvo
  */
-public class PlayerViewAction implements IAction {
+public class CreatePlayerViewAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
@@ -23,9 +27,14 @@ public class PlayerViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player");
-
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player/view");
+        
+        List<Team> teams = new TeamDAO().getAll();
+        request.setAttribute("positions", ESoccerPosition.values());
+        request.setAttribute("teams", teams);
+        
+        request.setAttribute("activeMenu", "player");
         rd.forward(request, response);
     }
-
+    
 }
