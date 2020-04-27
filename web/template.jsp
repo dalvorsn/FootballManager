@@ -18,7 +18,7 @@
 
         <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/cr-1.5.2/r-2.2.3/sc-2.0.1/sl-1.3.1/datatables.min.css"/>
         <link href="assets/css/sb-admin-2.css" rel="stylesheet"/>
 
     </head>
@@ -52,9 +52,9 @@
                     <div class="sidebar-heading">
                         Register
                     </div>
-                    
+
                     <li class="nav-item <c:if test="${activeMenu == 'team'}">active</c:if>">
-                        <a class="nav-link" href="${context}/router?action=team">
+                        <a class="nav-link" href="${context}/router?action=teams">
                             <i class="fas fa-fw fa-users"></i>
                             <span>Teams</span>
                         </a>
@@ -123,7 +123,8 @@
                             </ul>
                         </nav>
                     </c:if>
-
+                    
+                    <script src="assets/vendor/jquery/jquery.min.js"></script>
                     <div class="container-fluid">
                         <c:if test="${param.page != null}">
                             <jsp:include page="pages/${param.page}.jsp" />
@@ -165,7 +166,6 @@
         </c:if>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
@@ -173,18 +173,7 @@
 
         <!-- Custom scripts for all pages-->
         <script src="assets/js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="${context}/assets/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="${context}/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        
-        <script>
-            $('#dataTable').DataTable();
-            
-            $(".deleteButton").click(function(){
-                $("#deleteAction").attr("href", $(this).data("action"));
-            });
-        </script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/cr-1.5.2/r-2.2.3/sc-2.0.1/sl-1.3.1/datatables.min.js"></script>
 
     </body>
 

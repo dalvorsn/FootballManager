@@ -22,10 +22,10 @@
     <div class="card-header py-3">
         <div class="row">
             <div class="col">
-                <h6 class="m-1 font-weight-bold text-dark fa-lg">Players</h6>    
+                <h6 class="m-1 font-weight-bold text-dark fa-lg">Teams</h6>    
             </div>
             <div class="col text-right">
-                <a href="${context}/router?action=create-player" title="Add" ><i class="fas fa-plus-square right fa-lg text-success"></i></a>
+                <a href="${context}/router?action=create-team" title="Add" ><i class="fas fa-plus-square right fa-lg text-success"></i></a>
             </div>
         </div>
     </div>
@@ -38,9 +38,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Age</th>
-                        <th>Team</th>
+                        <th>Logo</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -48,28 +46,20 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>Age</th>
-                        <th>Team</th>
+                        <th>Logo</th>
                         <th></th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <c:forEach items="${players}" var="player" varStatus="status">
+                    <c:forEach items="${teams}" var="team" varStatus="status">
                         <tr>
-                            <td>${player.getId()}</td>
-                            <td>${player.getName()}</td>
-                            <td>${player.getPosition()}</td>
-                            <td>${player.getAge()}</td>
+                            <td>${team.getId()}</td>
+                            <td>${team.getName()}</td>
+                            <td class="text-center"><img style="max-height: 30px; max-width: 30px;" src="${team.getLogoUrl()}"></td>
                             <td class="text-center">
-                                <c:if test="${player.getTeam() != null}">
-                                    <img style="max-height: 30px; max-width: 30px;" src="${player.getTeam().getLogoUrl()}" title="${player.getTeam().getName()}">
-                                </c:if>
-                            </td>
-                            <td class="text-center">
-                                <a href="${context}/router?action=edit-player&id=${player.getId()}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
-                                <a data-action="${context}/router?action=delete-player&id=${player.getId()}" class="deleteButton" data-toggle="modal" data-target="#deleteModal" title="Delete"><i class="far fa-trash-alt text-danger"></i></a>
-
+                                <a href="${context}/router?action=edit-team&id=${team.getId()}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
+                                <a data-action="${context}/router?action=delete-player&id=${team.getId()}" class="deleteButton" data-toggle="modal" data-target="#deleteModal" title="Delete"><i class="far fa-trash-alt text-danger"></i></a>
+                                
                             </td>
                         </tr>
                     </c:forEach>
@@ -79,7 +69,6 @@
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();

@@ -27,5 +27,10 @@ public class PlayerDAO extends GenericDAO<Player, Long> {
         Query query = connection.createQuery("SELECT p FROM Player p");
         return query.getResultList();
     }
+    
+    public List<Player> getAllAvailable() throws SQLException {
+        Query query = connection.createQuery("SELECT p FROM Player p WHERE p.team IS NULL");
+        return query.getResultList();
+    }
 
 }

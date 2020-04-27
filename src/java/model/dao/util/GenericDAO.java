@@ -39,6 +39,8 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.merge(obj);
+        connection.flush();
+        connection.refresh(obj);
 
         transaction.commit();
         return obj;
@@ -49,6 +51,8 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.remove(obj);
+        connection.flush();
+        connection.refresh(obj);
 
         transaction.commit();
     }

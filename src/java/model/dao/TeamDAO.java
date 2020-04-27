@@ -27,5 +27,11 @@ public class TeamDAO extends GenericDAO<Team, Long> {
         Query query = connection.createQuery("SELECT t FROM Team t");
         return query.getResultList();
     }
+    
+    public List<Team> getTeamsByUser(Long userId) {
+        Query query = connection.createQuery("SELECT t FROM Team t WHERE t.owner.id = :userId");
+        query.setParameter("userId", userId);
+        return query.getResultList();
+    }
 
 }

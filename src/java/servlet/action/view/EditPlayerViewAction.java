@@ -28,8 +28,7 @@ public class EditPlayerViewAction implements IAction {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {        
         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player/view");
         Long id = Long.parseLong(request.getParameter("id"));
         Player player = new PlayerDAO().get(id);

@@ -19,19 +19,25 @@ import model.domain.User;
 import servlet.action.IAction;
 import servlet.action.db.CreateAccountSaveAction;
 import servlet.action.db.CreatePlayerSaveAction;
+import servlet.action.db.CreateTeamSaveAction;
 import servlet.action.db.DeletePlayerSaveAction;
 import servlet.action.db.EditPlayerSaveAction;
+import servlet.action.db.EditTeamSaveAction;
 import servlet.action.db.LoginCheckAction;
 import servlet.action.db.LogoutAction;
+import servlet.action.db.TeamAddPlayerSaveAction;
+import servlet.action.db.TeamRemovePlayerSaveAction;
 import servlet.action.view.ChampionshipViewAction;
 import servlet.action.view.CreateAccountViewAction;
 import servlet.action.view.CreatePlayerViewAction;
+import servlet.action.view.CreateTeamViewAction;
 import servlet.action.view.EditPlayerViewAction;
+import servlet.action.view.EditTeamViewAction;
 import servlet.action.view.HomeViewAction;
 import servlet.action.view.LoginViewAction;
 import servlet.action.view.PlayersViewAction;
 import servlet.action.view.RankViewAction;
-import servlet.action.view.TeamViewAction;
+import servlet.action.view.TeamsViewAction;
 
 /**
  *
@@ -54,8 +60,14 @@ public class Router extends HttpServlet {
 
         actionsMap.put("home", HomeViewAction.class);
 
-        actionsMap.put("team", TeamViewAction.class);
-
+        actionsMap.put("teams", TeamsViewAction.class);
+        actionsMap.put("create-team", CreateTeamViewAction.class);
+        actionsMap.put("create-team-save", CreateTeamSaveAction.class);
+        actionsMap.put("edit-team", EditTeamViewAction.class);
+        actionsMap.put("edit-team-save", EditTeamSaveAction.class);
+        actionsMap.put("team-add-player", TeamAddPlayerSaveAction.class);
+        actionsMap.put("team-rem-player", TeamRemovePlayerSaveAction.class);
+        
         actionsMap.put("championship", ChampionshipViewAction.class);
 
         actionsMap.put("players", PlayersViewAction.class);
