@@ -1,13 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="action" value="create-team-save" />
-<c:set var="ownerId" value="${user.getId()}" />
+<c:set var="ownerId" value="${user.id}" />
 <c:set var="buttonText" value="Create" />
 <c:if test="${team != null}">
-    <c:set var="id" value="${team.getId()}" />
-    <c:set var="name" value="${team.getName()}" />
-    <c:set var="logo" value="${team.getLogoUrl()}" />
-    <c:set var="ownerId" value="${team.getOwner().getId()}" />
+    <c:set var="ownerId" value="${team.owner.id}" />
     <c:set var="action" value="edit-team-save" />
     <c:set var="buttonText" value="Edit" />
 </c:if>
@@ -20,14 +17,14 @@
     <div class="card-body">
         <form action="${context}/router" method="POST">
             <input type="hidden" name="action" value="${action}"/>
-            <input type="hidden" name="id" value="${id}" />
+            <input type="hidden" name="id" value="${team.id}" />
             <input type="hidden" name="ownerId" value="${ownerId}">
 
-            <c:if test="${logo != null}">
+            <c:if test="${team.logoUrl != null}">
                 <br>
                 <div class="row">
                     <div class="col text-center">
-                        <img style="max-height: 50px; max-width: 50px;" src="${logo}">
+                        <img style="max-height: 50px; max-width: 50px;" src="${team.logoUrl}">
                     </div>
                 </div>
 
@@ -38,13 +35,13 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" value="${name}" id="name" name="name" aria-describedby="Team name" placeholder="Enter team name" required>
+                        <input type="text" class="form-control" value="${team.name}" id="name" name="name" aria-describedby="Team name" placeholder="Enter team name" required>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="logo_url">Logo</label>
-                        <input type="url" class="form-control" id="logo_url" name="logo_url" required value="${logo}">
+                        <input type="url" class="form-control" id="logo_url" name="logo_url" required value="${team.logoUrl}">
                     </div>
                 </div>
             </div>
@@ -76,12 +73,12 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <c:forEach items="${team.getPlayers()}" var="player" varStatus="status">
+                                            <c:forEach items="${teamPlayers}" var="player" varStatus="status">
                                                 <tr>
-                                                    <td>${player.getId()}</td>
-                                                    <td>${player.getName()}</td>
-                                                    <td>${player.getPosition()}</td>
-                                                    <td></td>
+                                                    <td>${player.id}</td>
+                                                    <td>${player.name}</td>
+                                                    <td>${player.position}</td>
+                                                    <td>${player.age}</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -120,10 +117,10 @@
                                         <tbody>
                                             <c:forEach items="${availablePlayers}" var="player" varStatus="status">
                                                 <tr>
-                                                    <td>${player.getId()}</td>
-                                                    <td>${player.getName()}</td>
-                                                    <td>${player.getPosition()}</td>
-                                                    <td>${player.getAge()}</td>
+                                                    <td>${player.id}</td>
+                                                    <td>${player.name}</td>
+                                                    <td>${player.position}</td>
+                                                    <td>${player.age}</td>
                                                 </tr>
                                             </c:forEach>
 
@@ -161,7 +158,7 @@
            
            let form = $('<form action="${context}/router" method="POST"></form>');
            form.append($('<input type="hidden" name="action" value="team-add-player" />'));
-           form.append($('<input type="hidden" name="team_id" value="${id}" />'));
+           form.append($('<input type="hidden" name="team_id" value="${team.id}" />'));
            
            selected.forEach( (obj) => {
                form.append($('<input type="hidden" name="playerId" value="' + obj[0] +'" />'));
@@ -180,7 +177,7 @@
            
            let form = $('<form action="${context}/router" method="POST"></form>');
            form.append($('<input type="hidden" name="action" value="team-rem-player" />'));
-           form.append($('<input type="hidden" name="team_id" value="${id}" />'));
+           form.append($('<input type="hidden" name="team_id" value="${team.id}" />'));
            
            selected.forEach( (obj) => {
                form.append($('<input type="hidden" name="playerId" value="' + obj[0] +'" />'));

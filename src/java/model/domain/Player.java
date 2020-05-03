@@ -42,7 +42,7 @@ public class Player implements Serializable {
     @Column(name = "age", nullable = false)
     private Integer age;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_team", nullable = true)
     private Team team;
 

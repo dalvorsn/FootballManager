@@ -51,24 +51,24 @@
                         <th>Position</th>
                         <th>Age</th>
                         <th>Team</th>
-                        <th></th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <c:forEach items="${players}" var="player" varStatus="status">
                         <tr>
-                            <td>${player.getId()}</td>
-                            <td>${player.getName()}</td>
-                            <td>${player.getPosition()}</td>
-                            <td>${player.getAge()}</td>
+                            <td>${player.id}</td>
+                            <td>${player.name}</td>
+                            <td>${player.position}</td>
+                            <td>${player.age}</td>
                             <td class="text-center">
-                                <c:if test="${player.getTeam() != null}">
-                                    <img style="max-height: 30px; max-width: 30px;" src="${player.getTeam().getLogoUrl()}" title="${player.getTeam().getName()}">
+                                <c:if test="${player.team != null}">
+                                    <img style="max-height: 30px; max-width: 30px;" src="${player.team.logoUrl}" title="${player.team.name}">
                                 </c:if>
                             </td>
                             <td class="text-center">
-                                <a href="${context}/router?action=edit-player&id=${player.getId()}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
-                                <a data-action="${context}/router?action=delete-player&id=${player.getId()}" class="deleteButton" data-toggle="modal" data-target="#deleteModal" title="Delete"><i class="far fa-trash-alt text-danger"></i></a>
+                                <a href="${context}/router?action=edit-player&id=${player.id}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
+                                <a href="${context}/router?action=delete-player&id=${player.id}" class="deleteButton" data-toggle="modal" data-target="#deleteModal" title="Delete"><i class="far fa-trash-alt text-danger"></i></a>
 
                             </td>
                         </tr>
@@ -84,8 +84,10 @@
     $(document).ready(function () {
         $('#dataTable').DataTable();
 
-        $(".deleteButton").click(function () {
-            $("#deleteAction").attr("href", $(this).data("action"));
+        $(document).delegate(".deleteButton", 'click', function (e) {
+            e.preventDefault();
+            
+            $("#deleteAction").attr("href", $(this).attr("href"));
         });
 
     });

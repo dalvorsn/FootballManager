@@ -1,23 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">You will delete this player, are you sure?</div>
-            <div class="modal-footer">
-                <button class="btn btn-dark" type="button" data-dismiss="modal">Cancel</button>
-                <a id="deleteAction" class="btn btn-danger" href="#">Delete</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <div class="row">
@@ -53,13 +35,11 @@
                 <tbody>
                     <c:forEach items="${teams}" var="team" varStatus="status">
                         <tr>
-                            <td>${team.getId()}</td>
-                            <td>${team.getName()}</td>
-                            <td class="text-center"><img style="max-height: 30px; max-width: 30px;" src="${team.getLogoUrl()}"></td>
+                            <td>${team.id}</td>
+                            <td>${team.name}</td>
+                            <td class="text-center"><img style="max-height: 30px; max-width: 30px;" src="${team.logoUrl}"></td>
                             <td class="text-center">
-                                <a href="${context}/router?action=edit-team&id=${team.getId()}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
-                                <a data-action="${context}/router?action=delete-player&id=${team.getId()}" class="deleteButton" data-toggle="modal" data-target="#deleteModal" title="Delete"><i class="far fa-trash-alt text-danger"></i></a>
-                                
+                                <a href="${context}/router?action=edit-team&id=${team.id}" title="Edit"><i class="fas fa-edit text-dark"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -72,10 +52,5 @@
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();
-
-        $(".deleteButton").click(function () {
-            $("#deleteAction").attr("href", $(this).data("action"));
-        });
-
     });
 </script>

@@ -32,8 +32,12 @@ public class EditTeamViewAction implements IAction {
         Long id = Long.parseLong(request.getParameter("id"));
         Team team = new TeamDAO().get(id);
         
-        List<Player> availablePlayers = new PlayerDAO().getAllAvailable();
+        PlayerDAO dao = new PlayerDAO();
+        List<Player> availablePlayers = dao.getAllAvailable();
+        List<Player> teamPlayers = dao.getAllByTeam(team.getId());
+        
         request.setAttribute("availablePlayers", availablePlayers);
+        request.setAttribute("teamPlayers", teamPlayers);
         request.setAttribute("team", team);
         
         request.setAttribute("activeMenu", "team");

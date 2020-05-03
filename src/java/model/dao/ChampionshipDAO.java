@@ -12,6 +12,8 @@ import javax.persistence.TypedQuery;
 import model.dao.util.GenericDAO;
 import model.domain.Championship;
 import model.dto.ChampionshipDTO;
+import model.dto.ChampionshipSelectDTO;
+import model.dto.TopScorerDTO;
 
 /**
  *
@@ -51,5 +53,31 @@ public class ChampionshipDAO extends GenericDAO<Championship, Long> {
         
         Long count = query.getSingleResult();
         return count > 0;
+    }
+    
+    public List<ChampionshipSelectDTO> getAllStarted() {
+        TypedQuery<ChampionshipSelectDTO> query = connection.createQuery(
+            "SELECT NEW model.dto.ChampionshipSelectDTO( c.id, c.name ) FROM Championship c "
+        + "WHERE  c.startDate IS NOT NULL ", ChampionshipSelectDTO.class);
+        
+        return query.getResultList();
+    }
+    
+    public TopScorerDTO getTopScorer(Long championshipId) {
+        TypedQuery<TopScorerDTO> query = connection.createQuery(
+        "SELECT NEW model.dto.TopScorerDTO( p.id, p.name, t.id, t.name, t.logoUrl, COUNT(g) ) "
+        + "FROM Championship c "
+            + "JOIN c.matches m "
+            + "JOIN m.goals g "
+            + "JOIN g.player p "
+            + "JOIN p.team t "
+        + "WHERE c.id = :championshipId "
+        + "GROUP BY p.id "
+        + "ORDER BY COUNT(g) DESC "
+        , TopScorerDTO.class);
+        
+        query.setParameter("championshipId", championshipId);
+        query.setMaxResults(1);
+        return query.getSingleResult();
     }
 }

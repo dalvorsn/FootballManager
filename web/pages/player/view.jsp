@@ -52,7 +52,7 @@
                         <select class="form-control" id="position" name="team">
                             <option value="">No team</option>
                             <c:forEach items="${teams}" var="team" varStatus="status">
-                                <option value="${team.getId()}" <c:if test="${team.getId() == teamId}">selected</c:if> >${team.getName()}</option>
+                                <option value="${team.id}" <c:if test="${team.id == teamId}">selected</c:if> >${team.name}</option>
                             </c:forEach>
                         </select>
                     </div>

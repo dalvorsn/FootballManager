@@ -105,7 +105,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-3 offset-1 text-center">
-                <img style="max-height: 150px; max-width: 150px;" src="${match.firstTeam.getLogoUrl()}">
+                <img style="max-height: 150px; max-width: 150px;" src="${match.firstTeam.logoUrl}">
             </div>
             <div class="col-1 mt-auto text-center">
                 <h1 class="display-1">${firstTeamGoalsCount}</h1>
@@ -117,7 +117,7 @@
                 <h1 class="display-1">${secondTeamGoalsCount}</h1>
             </div>
             <div class="col-3 text-center">
-                <img style="max-height: 150px; max-width: 150px;" src="${match.secondTeam.getLogoUrl()}">
+                <img style="max-height: 150px; max-width: 150px;" src="${match.secondTeam.logoUrl}">
             </div>
         </div>
         <div class="row">

@@ -71,10 +71,10 @@
                             <div class="card-body">
                                 <div class="row mt-2">
                                     <div class="col-3">
-                                        <img style="max-height: 50px; max-width: 50px;" src="${match.firstTeam.getLogoUrl()}">
+                                        <img style="max-height: 50px; max-width: 50px;" src="${match.firstTeam.logoUrl}">
                                     </div>
                                     <c:if test="${match.finished}">
-                                        
+
                                         <div class="col-2 text-left mt-2">
                                             <h5><b>${matchGoals[match].key}</b></h5>
                                         </div>
@@ -91,10 +91,10 @@
                                                 <i class="far fa-plus-square text-warning"></i>
                                             </a>
                                         </div>
-                                            
+
                                     </c:if>
                                     <div class="col-2">
-                                        <img style="max-height: 50px; max-width: 50px;" src="${match.secondTeam.getLogoUrl()}">
+                                        <img style="max-height: 50px; max-width: 50px;" src="${match.secondTeam.logoUrl}">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -130,7 +130,16 @@
                             <c:forEach items="${subscribes}" var="subscribe" varStatus="status">
                                 <tr>
                                     <td>${subscribe.team.id}</td>
-                                    <td>${subscribe.team.name}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-2 offset-1">
+                                                <img style="max-height: 40px; max-width: 40px;" src="${subscribe.team.logoUrl}">
+                                            </div>
+                                            <div class="col-7 p-2">
+                                                ${subscribe.team.name}
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>${subscribe.team.owner.name}</td>
                                 </tr>
                             </c:forEach>

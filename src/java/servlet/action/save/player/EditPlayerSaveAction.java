@@ -46,6 +46,8 @@ public class EditPlayerSaveAction implements IAction {
             if(team != null) {
                 player.setTeam(team);
             }
+        } else {
+            player.setTeam(null);
         }
         
         dao.update(player);

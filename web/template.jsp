@@ -148,14 +148,9 @@
                         </c:catch>
                     </div>
                     <c:if test="${ex != null}">
-                        <style>
-                            .container-fluid {
-                                visibility: hidden;
-                            }
-                        </style>
-                        <textarea style="width: 100vw !important" rows="10">
-                            ${ex.message}
-                        </textarea>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error: </strong> ${ex.message}
+                        </div>
                     </c:if>
                 </div>
                 <c:if test="${user != null}">

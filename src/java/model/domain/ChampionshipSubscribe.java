@@ -6,6 +6,7 @@
 package model.domain;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,11 +29,11 @@ public class ChampionshipSubscribe implements Serializable {
     @Column(name = "id")
     private Long id;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_championship", nullable = false)
     private Championship championship;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_team", nullable = false)
     private Team team;
 

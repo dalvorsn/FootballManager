@@ -52,7 +52,6 @@ public class Championship implements Serializable {
         this.maxSubscribers = maxSubscribers;
     }
     
-    
 
     public String getName() {
         return name;

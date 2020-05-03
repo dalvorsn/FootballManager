@@ -44,7 +44,7 @@ import servlet.action.view.team.EditTeamViewAction;
 import servlet.action.view.HomeViewAction;
 import servlet.action.view.account.LoginViewAction;
 import servlet.action.view.player.PlayersViewAction;
-import servlet.action.view.RankViewAction;
+import servlet.action.view.rank.RankViewAction;
 import servlet.action.view.match.EditMatchViewAction;
 import servlet.action.view.team.TeamsViewAction;
 

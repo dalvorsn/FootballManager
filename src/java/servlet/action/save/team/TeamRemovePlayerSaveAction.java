@@ -32,16 +32,11 @@ public class TeamRemovePlayerSaveAction implements IAction {
         String[] playerIds = request.getParameterValues("playerId");
         
         PlayerDAO playerDao = new PlayerDAO();
-        List<Player> teamPlayers = team.getPlayers();
         for(String playerId : playerIds) {
             Player player = playerDao.get(Long.parseLong(playerId));
             player.setTeam(null);
-            teamPlayers.remove(player);
             playerDao.update(player);
         }
-        
-        team.setPlayers(teamPlayers);
-        teamDao.update(team);
         
         response.sendRedirect("router?action=edit-team&id="+teamId);
     }

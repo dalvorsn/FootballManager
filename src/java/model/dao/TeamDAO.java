@@ -33,5 +33,16 @@ public class TeamDAO extends GenericDAO<Team, Long> {
         query.setParameter("userId", userId);
         return query.getResultList();
     }
+    
+    public List<Team> getTeamsByChampionship(Long championshipId) {
+        Query query = connection.createQuery(
+        "SELECT t FROM Championship c "
+            + "JOIN c.subscribes s "
+            + "JOIN s.team t "
+        + "WHERE c.id = :championshipId");
+        
+        query.setParameter("championshipId", championshipId);
+        return query.getResultList();
+    }
 
 }
