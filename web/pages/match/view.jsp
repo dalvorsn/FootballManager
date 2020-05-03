@@ -98,8 +98,16 @@
 </div>
 
 <div class="card shadow mb-4">
+
     <div class="card-header py-3">
-        <h6 class="m-1 font-weight-bold text-dark fa-lg">Match</h6>
+        <div class="row">
+            <div class="col">
+                <h6 class="m-1 font-weight-bold text-dark fa-lg">Match</h6>    
+            </div>
+            <div class="col text-right">
+                <a href="${context}/router?action=edit-championship&id=${match.championship.id}" title="Back" ><i class="fas fa-reply text-success"></i></i></a>
+            </div>
+        </div>
     </div>
 
     <div class="card-body">
