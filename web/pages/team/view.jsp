@@ -171,6 +171,7 @@
            form.submit();
         });
         
+        // TODO: usar ajax
         $("#removeFromTeam").click( () => {
            let selected = [].map.call(dtPlayersTeam.rows('.selected').data(),  e => { return e[0]; });
            if(selected.length === 0) {

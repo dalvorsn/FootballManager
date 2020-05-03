@@ -3,29 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
+package servlet.action.match;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.MatchDAO;
+import model.domain.Match;
 import servlet.action.IAction;
 
 /**
  *
  * @author dalvo
  */
-public class LoginViewAction implements IAction {
+public class FinishMatchSaveAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
-        return false;
+        return true;
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=login");
-
-        rd.forward(request, response);
+        Long matchId = Long.parseLong( request.getParameter("match_id") );
+        MatchDAO dao = new MatchDAO();
+        Match match = dao.get(matchId);
+        match.setFinished(true);
+        dao.update(match);
+        
+        response.sendRedirect("router?action=edit-match&id="+ match.getId());
     }
-
+    
 }

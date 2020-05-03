@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.db;
+package servlet.action.save.player;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ import model.domain.Player;
 import model.domain.Team;
 import model.domain.e.ESoccerPosition;
 import servlet.action.IAction;
-import servlet.action.view.PlayersViewAction;
+import servlet.action.view.player.PlayersViewAction;
 
 /**
  *

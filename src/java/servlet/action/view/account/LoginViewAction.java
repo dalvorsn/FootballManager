@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
+package servlet.action.view.account;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -14,16 +14,16 @@ import servlet.action.IAction;
  *
  * @author dalvo
  */
-public class ChampionshipViewAction implements IAction {
+public class LoginViewAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
-        return true;
+        return false;
     }
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=championship");
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=login");
 
         rd.forward(request, response);
     }

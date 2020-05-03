@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.db;
+package servlet.action.save.account;
 
 import servlet.action.view.HomeViewAction;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.dao.UserDAO;
 import model.domain.User;
 import servlet.action.IAction;
-import servlet.action.view.LoginViewAction;
+import servlet.action.view.account.LoginViewAction;
 
 /**
  *

@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.db;
+package servlet.action.save.championship;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dao.TeamDAO;
-import model.domain.Team;
+import model.dao.ChampionshipDAO;
+import model.domain.Championship;
 import servlet.action.IAction;
-import servlet.action.view.TeamsViewAction;
 
 /**
  *
  * @author dalvo
  */
-public class EditTeamSaveAction implements IAction {
+public class CreateChampionshipSaveAction implements IAction {
+
     @Override
     public boolean requiresAuth() {
         return true;
@@ -24,16 +24,14 @@ public class EditTeamSaveAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String teamId = request.getParameter("id");
         String name = request.getParameter("name");
-        String logo = request.getParameter("logo_url");
+        Integer maxSubscribers = Integer.parseInt(request.getParameter("max_subscribers"));
         
-        TeamDAO dao = new TeamDAO();
-        Team team = dao.get(Long.parseLong(teamId));
-        team.setLogoUrl(logo);
-        team.setName(name);
         
-        dao.update(team);
-        new TeamsViewAction().execute(request, response);
+        ChampionshipDAO dao = new ChampionshipDAO();
+        Championship championship = dao.insert(new Championship(name, maxSubscribers));
+        
+        response.sendRedirect("router?action=edit-championship&id="+ championship.getId());
     }
+    
 }

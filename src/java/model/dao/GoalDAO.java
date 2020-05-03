@@ -27,5 +27,10 @@ public class GoalDAO extends GenericDAO<Goal, Long> {
         Query query = connection.createQuery("SELECT g FROM Goal g");
         return query.getResultList();
     }
-
+    
+    public List<Goal> getAllByMatch(Long matchId) throws SQLException {
+        Query query = connection.createQuery("SELECT g FROM Goal g WHERE g.match.id = :matchId");
+        query.setParameter("matchId", matchId);
+        return query.getResultList();
+    }
 }

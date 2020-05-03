@@ -17,27 +17,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.domain.User;
 import servlet.action.IAction;
-import servlet.action.db.CreateAccountSaveAction;
-import servlet.action.db.CreatePlayerSaveAction;
-import servlet.action.db.CreateTeamSaveAction;
-import servlet.action.db.DeletePlayerSaveAction;
-import servlet.action.db.EditPlayerSaveAction;
-import servlet.action.db.EditTeamSaveAction;
-import servlet.action.db.LoginCheckAction;
-import servlet.action.db.LogoutAction;
-import servlet.action.db.TeamAddPlayerSaveAction;
-import servlet.action.db.TeamRemovePlayerSaveAction;
-import servlet.action.view.ChampionshipViewAction;
-import servlet.action.view.CreateAccountViewAction;
-import servlet.action.view.CreatePlayerViewAction;
-import servlet.action.view.CreateTeamViewAction;
-import servlet.action.view.EditPlayerViewAction;
-import servlet.action.view.EditTeamViewAction;
+import servlet.action.match.AddGoalMatchSaveAction;
+import servlet.action.match.FinishMatchSaveAction;
+import servlet.action.save.account.CreateAccountSaveAction;
+import servlet.action.save.championship.CreateChampionshipSaveAction;
+import servlet.action.save.player.CreatePlayerSaveAction;
+import servlet.action.save.team.CreateTeamSaveAction;
+import servlet.action.save.player.DeletePlayerSaveAction;
+import servlet.action.save.championship.EditChampionshipSaveAction;
+import servlet.action.save.player.EditPlayerSaveAction;
+import servlet.action.save.team.EditTeamSaveAction;
+import servlet.action.save.account.LoginCheckAction;
+import servlet.action.save.account.LogoutAction;
+import servlet.action.save.championship.StartChampionshipSaveAction;
+import servlet.action.save.championship.SubscribeChampionshipSaveAction;
+import servlet.action.save.team.TeamAddPlayerSaveAction;
+import servlet.action.save.team.TeamRemovePlayerSaveAction;
+import servlet.action.view.championship.ChampionshipsViewAction;
+import servlet.action.view.account.CreateAccountViewAction;
+import servlet.action.view.championship.CreateChampionshipViewAction;
+import servlet.action.view.player.CreatePlayerViewAction;
+import servlet.action.view.team.CreateTeamViewAction;
+import servlet.action.view.championship.EditChampionshipViewAction;
+import servlet.action.view.player.EditPlayerViewAction;
+import servlet.action.view.team.EditTeamViewAction;
 import servlet.action.view.HomeViewAction;
-import servlet.action.view.LoginViewAction;
-import servlet.action.view.PlayersViewAction;
+import servlet.action.view.account.LoginViewAction;
+import servlet.action.view.player.PlayersViewAction;
 import servlet.action.view.RankViewAction;
-import servlet.action.view.TeamsViewAction;
+import servlet.action.view.match.EditMatchViewAction;
+import servlet.action.view.team.TeamsViewAction;
 
 /**
  *
@@ -68,8 +77,18 @@ public class Router extends HttpServlet {
         actionsMap.put("team-add-player", TeamAddPlayerSaveAction.class);
         actionsMap.put("team-rem-player", TeamRemovePlayerSaveAction.class);
         
-        actionsMap.put("championship", ChampionshipViewAction.class);
-
+        actionsMap.put("championships", ChampionshipsViewAction.class);
+        actionsMap.put("create-championship", CreateChampionshipViewAction.class);
+        actionsMap.put("create-championship-save", CreateChampionshipSaveAction.class);
+        actionsMap.put("edit-championship", EditChampionshipViewAction.class);
+        actionsMap.put("edit-championship-save", EditChampionshipSaveAction.class);
+        actionsMap.put("start-championship-save", StartChampionshipSaveAction.class);
+        actionsMap.put("subscribe-championship-save", SubscribeChampionshipSaveAction.class);
+        
+        actionsMap.put("edit-match", EditMatchViewAction.class);
+        actionsMap.put("finish-match-save", FinishMatchSaveAction.class);
+        actionsMap.put("add-goal-match-save", AddGoalMatchSaveAction.class);
+        
         actionsMap.put("players", PlayersViewAction.class);
         actionsMap.put("create-player", CreatePlayerViewAction.class);
         actionsMap.put("edit-player", EditPlayerViewAction.class);
@@ -80,10 +99,12 @@ public class Router extends HttpServlet {
         actionsMap.put("rank", RankViewAction.class);
     }
 
-    public IAction getAction(String actionName) throws InstantiationException, IllegalAccessException {
-        Class<? extends IAction> reflectClass = actionsMap.get(actionName);
-
-        return reflectClass.newInstance();
+    public IAction getAction(String actionName) throws InstantiationException, IllegalAccessException, Exception {
+        if(! actionsMap.containsKey(actionName) ) {
+            throw new Exception("Page not found");
+        }
+        
+        return actionsMap.get(actionName).newInstance();
     }
 
     /**
@@ -102,9 +123,6 @@ public class Router extends HttpServlet {
 
         try {
             IAction action = getAction(actionName);
-            if(action == null) {
-                throw new Exception("Page not found.");
-            }
             
             User user = (User) request.getSession().getAttribute("user");
             if (user != null) {
@@ -119,7 +137,7 @@ public class Router extends HttpServlet {
             Logger.getLogger(Router.class.getName()).log(Level.SEVERE, null, ex);
             RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=error");
 
-            request.setAttribute("error", ex.getCause().toString());
+            request.setAttribute("error", ex.toString().replaceAll("(.*:)", ""));
             rd.forward(request, response);
         }
     }

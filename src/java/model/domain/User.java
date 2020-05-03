@@ -37,6 +37,9 @@ public class User implements Serializable {
 
     @Column(name = "profile_picture", length = 255, nullable = true)
     private String profilePicture;
+    
+    @Column(name = "is_admin", nullable = false)
+    private Boolean isAdmin;
 
     public User() {
     }
@@ -81,4 +84,12 @@ public class User implements Serializable {
         this.profilePicture = profilePicture;
     }
 
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+    
 }

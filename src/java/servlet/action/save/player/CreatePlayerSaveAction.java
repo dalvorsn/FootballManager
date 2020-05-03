@@ -1,4 +1,4 @@
-package servlet.action.db;
+package servlet.action.save.player;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +9,7 @@ import model.domain.Player;
 import model.domain.Team;
 import model.domain.e.ESoccerPosition;
 import servlet.action.IAction;
-import servlet.action.view.PlayersViewAction;
+import servlet.action.view.player.PlayersViewAction;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

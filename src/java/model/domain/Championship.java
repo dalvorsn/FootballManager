@@ -6,16 +6,13 @@
 package model.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,17 +28,18 @@ public class Championship implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    
+    @Column(name = "name", nullable = false, length = 60 )
+    private String name;
+    
+    @Column(name = "max_subscribers", nullable = false)
+    private Integer maxSubscribers;
 
-    @Column(name = "start_date", nullable = false, columnDefinition = "DATETIME")
-    private LocalDateTime startDate;
+    @Column(name = "start_date", nullable = true, columnDefinition = "DATETIME")
+    private Timestamp startDate;
 
-    @ManyToMany
-    @JoinTable(
-            name = "championship_team",
-            joinColumns = @JoinColumn(name = "id_championship"),
-            inverseJoinColumns = @JoinColumn(name = "id_team")
-    )
-    private List<Team> teams;
+    @OneToMany(mappedBy = "championship")
+    private List<ChampionshipSubscribe> subscribes;
 
     @OneToMany(mappedBy = "championship")
     private List<Match> matches;
@@ -49,4 +47,58 @@ public class Championship implements Serializable {
     public Championship() {
     }
 
+    public Championship(String name, Integer maxSubscribers) {
+        this.name = name;
+        this.maxSubscribers = maxSubscribers;
+    }
+    
+    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public List<ChampionshipSubscribe> getSubscribes() {
+        return subscribes;
+    }
+
+    public void setSubscribes(List<ChampionshipSubscribe> subscribes) {
+        this.subscribes = subscribes;
+    }
+
+    public Integer getMaxSubscribers() {
+        return maxSubscribers;
+    }
+
+    public void setMaxSubscribers(Integer maxSubscribers) {
+        this.maxSubscribers = maxSubscribers;
+    }
 }

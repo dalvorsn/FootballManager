@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.db;
+package servlet.action.view.championship;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import servlet.action.IAction;
-import servlet.action.view.LoginViewAction;
 
 /**
  *
  * @author dalvo
  */
-public class LogoutAction implements IAction {
+public class CreateChampionshipViewAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
@@ -23,10 +23,9 @@ public class LogoutAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().invalidate();
-        request.setAttribute("user", null);
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=championship/view");
 
-        new LoginViewAction().execute(request, response);
+        rd.forward(request, response);
     }
-
+    
 }

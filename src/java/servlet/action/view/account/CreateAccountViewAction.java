@@ -1,4 +1,4 @@
-package servlet.action.view;
+package servlet.action.view.account;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

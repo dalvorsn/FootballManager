@@ -8,8 +8,10 @@ package model.dao;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import model.dao.util.GenericDAO;
 import model.domain.Match;
+import model.dto.MatchResultDTO;
 
 /**
  *
@@ -27,5 +29,5 @@ public class MatchDAO extends GenericDAO<Match, Long> {
         Query query = connection.createQuery("SELECT m FROM Match m");
         return query.getResultList();
     }
-
+    
 }

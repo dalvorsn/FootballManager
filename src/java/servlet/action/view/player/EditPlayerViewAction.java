@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
+package servlet.action.view.player;
 
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -13,13 +13,14 @@ import model.dao.PlayerDAO;
 import model.dao.TeamDAO;
 import model.domain.Player;
 import model.domain.Team;
+import model.domain.e.ESoccerPosition;
 import servlet.action.IAction;
 
 /**
  *
  * @author dalvo
  */
-public class EditTeamViewAction implements IAction {
+public class EditPlayerViewAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
@@ -27,16 +28,17 @@ public class EditTeamViewAction implements IAction {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=team/view");
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {        
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player/view");
         Long id = Long.parseLong(request.getParameter("id"));
-        Team team = new TeamDAO().get(id);
+        Player player = new PlayerDAO().get(id);
         
-        List<Player> availablePlayers = new PlayerDAO().getAllAvailable();
-        request.setAttribute("availablePlayers", availablePlayers);
-        request.setAttribute("team", team);
+        List<Team> teams = new TeamDAO().getAll();
+        request.setAttribute("positions", ESoccerPosition.values());
+        request.setAttribute("teams", teams);
+        request.setAttribute("player", player);
         
-        request.setAttribute("activeMenu", "team");
+        request.setAttribute("activeMenu", "player");
         rd.forward(request, response);
     }
     

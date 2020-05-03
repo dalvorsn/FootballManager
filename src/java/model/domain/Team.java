@@ -7,6 +7,7 @@ package model.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Team implements Serializable {
     @JoinColumn(name = "id_owner", nullable = false)
     private User owner;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "team")
     private List<Player> players;
 
     public Team() {
@@ -85,5 +86,4 @@ public class Team implements Serializable {
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
-
 }

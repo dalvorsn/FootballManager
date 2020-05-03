@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
+package servlet.action.save.player;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dao.PlayerDAO;
+import model.domain.Player;
 import servlet.action.IAction;
+import servlet.action.view.player.PlayersViewAction;
 
 /**
  *
  * @author dalvo
  */
-public class CreateTeamViewAction implements IAction {
+public class DeletePlayerSaveAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
@@ -23,10 +25,12 @@ public class CreateTeamViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=team/view");
+        String id = request.getParameter("id");
+        PlayerDAO dao = new PlayerDAO();
         
-        request.setAttribute("activeMenu", "team");
-        rd.forward(request, response);
+        Player player = dao.get( Long.parseLong(id) );
+        dao.delete(player);
+        new PlayersViewAction().execute(request, response);
     }
     
 }

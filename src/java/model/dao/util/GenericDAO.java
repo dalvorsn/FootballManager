@@ -27,10 +27,10 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.persist(obj);
-        connection.flush();
-        connection.refresh(obj);
-
+        
         transaction.commit();
+        
+        connection.refresh(obj);
         return obj;
     }
 
@@ -39,10 +39,10 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.merge(obj);
-        connection.flush();
-        connection.refresh(obj);
-
+        
         transaction.commit();
+        
+        connection.refresh(obj);
         return obj;
     }
 
@@ -51,9 +51,7 @@ public abstract class GenericDAO<C, K> {
         transaction.begin();
 
         connection.remove(obj);
-        connection.flush();
-        connection.refresh(obj);
-
+       
         transaction.commit();
     }
 

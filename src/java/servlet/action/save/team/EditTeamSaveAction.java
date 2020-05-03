@@ -1,25 +1,24 @@
+package servlet.action.save.team;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
 
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.dao.TeamDAO;
 import model.domain.Team;
-import model.domain.User;
 import servlet.action.IAction;
+import servlet.action.view.team.TeamsViewAction;
 
 /**
  *
  * @author dalvo
  */
-public class TeamsViewAction implements IAction {
-
+public class EditTeamSaveAction implements IAction {
     @Override
     public boolean requiresAuth() {
         return true;
@@ -27,14 +26,16 @@ public class TeamsViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=team/list");
+        String teamId = request.getParameter("id");
+        String name = request.getParameter("name");
+        String logo = request.getParameter("logo_url");
         
-        User user = (User) request.getSession().getAttribute("user");
-        List<Team> teams = new TeamDAO().getTeamsByUser(user.getId());
-        request.setAttribute("teams", teams);
+        TeamDAO dao = new TeamDAO();
+        Team team = dao.get(Long.parseLong(teamId));
+        team.setLogoUrl(logo);
+        team.setName(name);
         
-        request.setAttribute("activeMenu", "team");
-        rd.forward(request, response);
+        dao.update(team);
+        new TeamsViewAction().execute(request, response);
     }
-
 }

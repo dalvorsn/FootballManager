@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.db;
+package servlet.action.save.team;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;

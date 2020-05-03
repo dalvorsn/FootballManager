@@ -6,7 +6,6 @@
 package model.domain;
 
 import java.io.Serializable;
-import java.time.LocalTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,10 +40,69 @@ public class Goal implements Serializable {
     @JoinColumn(name = "id_player", nullable = false)
     private Player player;
 
-    @Column(name = "goal_time", nullable = false, columnDefinition = "TIME")
-    private LocalTime goalTime;
+    @Column(name = "goal_round", nullable = false)
+    private Integer goalRound;
+    
+    @Column(name = "goal_minute", nullable = false)
+    private Integer goalMinute;
 
     public Goal() {
     }
 
+    public Goal(Match match, Team team, Player player, Integer goalRound, Integer goalMinute) {
+        this.match = match;
+        this.team = team;
+        this.player = player;
+        this.goalRound = goalRound;
+        this.goalMinute = goalMinute;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Integer getGoalRound() {
+        return goalRound;
+    }
+
+    public void setGoalRound(Integer goalRound) {
+        this.goalRound = goalRound;
+    }
+
+    public Integer getGoalMinute() {
+        return goalMinute;
+    }
+
+    public void setGoalMinute(Integer goalMinute) {
+        this.goalMinute = goalMinute;
+    }
+    
 }

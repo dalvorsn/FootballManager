@@ -3,22 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.action.view;
+package servlet.action.view.player;
 
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dao.TeamDAO;
-import model.domain.Team;
-import model.domain.e.ESoccerPosition;
+import model.dao.PlayerDAO;
+import model.domain.Player;
 import servlet.action.IAction;
 
 /**
  *
  * @author dalvo
  */
-public class CreatePlayerViewAction implements IAction {
+public class PlayersViewAction implements IAction {
 
     @Override
     public boolean requiresAuth() {
@@ -27,14 +26,13 @@ public class CreatePlayerViewAction implements IAction {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player/view");
+        RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=player/list");
         
-        List<Team> teams = new TeamDAO().getAll();
-        request.setAttribute("positions", ESoccerPosition.values());
-        request.setAttribute("teams", teams);
+        List<Player> players = new PlayerDAO().getAll();
+        request.setAttribute("players", players);
         
         request.setAttribute("activeMenu", "player");
         rd.forward(request, response);
     }
-    
+
 }

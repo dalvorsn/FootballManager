@@ -61,7 +61,7 @@
                     </li>
 
                     <li class="nav-item <c:if test="${activeMenu == 'championship'}">active</c:if>">
-                        <a class="nav-link" href="${context}/router?action=championship">
+                        <a class="nav-link" href="${context}/router?action=championships">
                             <i class="fas fa-fw fa-trophy"></i>
                             <span>Championships</span>
                         </a>
@@ -123,13 +123,40 @@
                             </ul>
                         </nav>
                     </c:if>
-                    
+
                     <script src="assets/vendor/jquery/jquery.min.js"></script>
                     <div class="container-fluid">
-                        <c:if test="${param.page != null}">
-                            <jsp:include page="pages/${param.page}.jsp" />
+
+                        <c:if test="${message != null}">
+                            <c:if test="${title == null}">
+                                <c:set var="title" value="Atention!" />
+                            </c:if>
+                            <c:if test="${colorClass == null}">
+                                <c:set var="colorClass" value="warning" />
+                            </c:if>
+                            <div class="alert alert-${colorClass} alert-dismissible fade show" role="alert">
+                                <strong>${title}</strong> ${message}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </c:if>
+                        <c:catch var="ex">
+                            <c:if test="${param.page != null}">
+                                <jsp:include page="pages/${param.page}.jsp" />
+                            </c:if>
+                        </c:catch>
                     </div>
+                    <c:if test="${ex != null}">
+                        <style>
+                            .container-fluid {
+                                visibility: hidden;
+                            }
+                        </style>
+                        <textarea style="width: 100vw !important" rows="10">
+                            ${ex.message}
+                        </textarea>
+                    </c:if>
                 </div>
                 <c:if test="${user != null}">
                     <footer class="sticky-footer bg-white">
