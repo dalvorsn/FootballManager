@@ -29,6 +29,7 @@
                                 <th class="text-center">Team</th>
                                 <th class="text-center">Played</th>
                                 <th class="text-center">Won</th>
+                                <th class="text-center">Lost</th>
                                 <th class="text-center">Drawn</th>
                                 <th class="text-center">For</th>
                                 <th class="text-center">Against</th>
@@ -41,6 +42,7 @@
                                 <th class="text-center">Team</th>
                                 <th class="text-center">Played</th>
                                 <th class="text-center">Won</th>
+                                <th class="text-center">Lost</th>
                                 <th class="text-center">Drawn</th>
                                 <th class="text-center">For</th>
                                 <th class="text-center">Against</th>
@@ -63,6 +65,7 @@
                                     </td>
                                     <td class="text-center align-middle">${rankRow.played}</td>
                                     <td class="text-center align-middle">${rankRow.won}</td>
+                                    <td class="text-center align-middle">${rankRow.lost}</td>
                                     <td class="text-center align-middle">${rankRow.drawn}</td>
                                     <td class="text-center align-middle">${rankRow.goalsFor}</td>
                                     <td class="text-center align-middle">${rankRow.goalsAgainst}</td>
