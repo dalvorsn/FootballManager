@@ -66,7 +66,7 @@
             </div>
             <div class="row" id="rowMatchs">
                 <c:forEach items="${matches}" var="match" varStatus="status">
-                    <div class="col-3 mt-3">
+                    <div class="col-3 mt-3 h-100">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row mt-2">
@@ -86,20 +86,32 @@
                                         </div>
                                     </c:if>
                                     <c:if test="${not match.finished}">
-                                        <div class="col-6 text-center">
-                                            <a class="btn" href="${context}/router?action=edit-match&id=${match.id}" title="Add result" role="button">
-                                                <i class="far fa-plus-square text-warning"></i>
-                                            </a>
+                                        <div class="col-2 text-left mt-2">
+                                            <h5><b>-</b></h5>
                                         </div>
-
+                                        <div class="col-2 text-center mt-2">
+                                            <h5><b>x</b></h5>
+                                        </div>
+                                        <div class="col-2 text-right mt-2">
+                                            <h5><b>-</b></h5>
+                                        </div>
                                     </c:if>
                                     <div class="col-2">
                                         <img style="max-height: 50px; max-width: 50px;" src="${match.secondTeam.logoUrl}">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 text-center">
+                                    <div class="col-12 text-center ml-2">
                                         <b>${match.firstTeam.name}</b> vs <b>${match.secondTeam.name}</b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center ml-2">
+
+                                        <a class="btn" href="${context}/router?action=edit-match&id=${match.id}" title="See result" role="button">
+                                            <i class="far fa-futbol "></i>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>

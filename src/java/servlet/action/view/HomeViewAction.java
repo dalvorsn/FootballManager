@@ -25,7 +25,7 @@ public class HomeViewAction implements IAction {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=home");
-
+        request.setAttribute("activeMenu", "home");
         rd.forward(request, response);
     }
 

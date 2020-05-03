@@ -105,7 +105,7 @@
                 <h6 class="m-1 font-weight-bold text-dark fa-lg">Match</h6>    
             </div>
             <div class="col text-right">
-                <a href="${context}/router?action=edit-championship&id=${match.championship.id}" title="Back" ><i class="fas fa-reply text-success"></i></i></a>
+                <a href="${context}/router?action=edit-championship&id=${match.championship.id}" title="Back" ><i class="fas fa-reply text-dark"></i></i></a>
             </div>
         </div>
     </div>
