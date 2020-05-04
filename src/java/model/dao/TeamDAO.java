@@ -13,7 +13,7 @@ import model.domain.Team;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class TeamDAO extends GenericDAO<Team, Long> {
 

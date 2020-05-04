@@ -13,7 +13,7 @@ import model.domain.Goal;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class GoalDAO extends GenericDAO<Goal, Long> {
 

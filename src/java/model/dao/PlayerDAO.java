@@ -13,7 +13,7 @@ import model.domain.Player;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class PlayerDAO extends GenericDAO<Player, Long> {
 

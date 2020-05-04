@@ -17,7 +17,7 @@ import servlet.action.view.player.PlayersViewAction;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class EditPlayerSaveAction implements IAction {
 

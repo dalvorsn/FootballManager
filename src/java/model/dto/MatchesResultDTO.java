@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class MatchesResultDTO implements Serializable {
     private Integer round;

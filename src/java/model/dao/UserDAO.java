@@ -14,7 +14,7 @@ import model.domain.User;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class UserDAO extends GenericDAO<User, Long> {
 

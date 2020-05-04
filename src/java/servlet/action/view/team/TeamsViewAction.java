@@ -16,7 +16,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class TeamsViewAction implements IAction {
 

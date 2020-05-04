@@ -17,7 +17,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author Luciano
  */
 public class EditTeamViewAction implements IAction {
 
