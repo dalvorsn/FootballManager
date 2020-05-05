@@ -63,12 +63,12 @@
         </div>
     </div>
 </div>
-<div class="card shadow mb-4">
+<div class="card shadow mb-4  mt-3">
     <div class="card-body"> 
         <h5 class="card-title">Last Matches</h5>
-        <div class="row">
+        <div class="row mt-3">
             <c:forEach items="${matchResults}" var="match" varStatus="status">
-                <div class="col-4 mt-auto">  
+                <div class="col-4">  
                     <div class="card shadow mb-4">
                         <div class="card-body">            
                             <div class="row">
