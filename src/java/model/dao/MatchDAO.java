@@ -8,6 +8,7 @@ package model.dao;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import model.dao.util.GenericDAO;
 import model.domain.Match;
 
@@ -28,4 +29,15 @@ public class MatchDAO extends GenericDAO<Match, Long> {
         return query.getResultList();
     }
     
+    public Long getCount() {
+        TypedQuery<Long> query = connection.createQuery("SELECT COUNT(m) FROM Match m WHERE m.finished = TRUE", Long.class);
+        return query.getSingleResult();
+    }
+    
+    public List<Match> getLastMatches() throws SQLException {
+        Query query = connection.createQuery("SELECT m FROM Match m WHERE m.finished = TRUE ORDER BY m.id DESC");
+        query.setMaxResults(6);
+        
+        return query.getResultList();
+    }
 }

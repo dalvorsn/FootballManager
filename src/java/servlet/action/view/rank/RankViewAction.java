@@ -74,7 +74,9 @@ public class RankViewAction implements IAction {
                 }
                 
                 MatchesResultDTO m = new MatchesResultDTO();
-
+                
+                m.setId(match.getId());
+                
                 m.setFirstTeamId(first.getId());
                 m.setFirstTeamGoals(firstTeamGoalsCount);
                 m.setFirstTeamLogo(first.getLogoUrl());

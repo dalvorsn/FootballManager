@@ -8,6 +8,7 @@ package model.dao;
 import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import model.dao.util.GenericDAO;
 import model.domain.Goal;
 
@@ -32,5 +33,9 @@ public class GoalDAO extends GenericDAO<Goal, Long> {
         Query query = connection.createQuery("SELECT g FROM Goal g WHERE g.match.id = :matchId");
         query.setParameter("matchId", matchId);
         return query.getResultList();
+    }
+    public Long getCount() {
+        TypedQuery<Long> query = connection.createQuery("SELECT COUNT(g) FROM Goal g", Long.class);
+        return query.getSingleResult();
     }
 }

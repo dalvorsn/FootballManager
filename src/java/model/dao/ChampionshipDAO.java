@@ -80,4 +80,9 @@ public class ChampionshipDAO extends GenericDAO<Championship, Long> {
         query.setMaxResults(1);
         return query.getSingleResult();
     }
+    
+    public Long getCount() {
+        TypedQuery<Long> query = connection.createQuery("SELECT COUNT(c) FROM Championship c", Long.class);
+        return query.getSingleResult();
+    }
 }

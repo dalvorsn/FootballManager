@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author Luciano
  */
 public class MatchesResultDTO implements Serializable {
+    private Long id;
     private Integer round;
     
     private Long firstTeamId;
@@ -107,6 +108,14 @@ public class MatchesResultDTO implements Serializable {
 
     public void setSecondTeamId(Long secondTeamId) {
         this.secondTeamId = secondTeamId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     

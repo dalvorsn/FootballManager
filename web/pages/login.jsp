@@ -25,16 +25,13 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                        </div>
-                                    </div>
                                     <c:if test="${error != null}">
-                                        ${error}
+                                        <div class="alert alert-danger show text-center" role="alert">
+                                            ${error}
+                                        </div>
                                     </c:if>
-                                    <button class="btn btn-primary btn-user btn-block">
+
+                                    <button class="btn btn-primary btn-user btn-block bg-success">
                                         Login
                                     </button>
                                 </form>
