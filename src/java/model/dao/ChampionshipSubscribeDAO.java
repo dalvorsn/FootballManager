@@ -13,7 +13,7 @@ import model.domain.ChampionshipSubscribe;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class ChampionshipSubscribeDAO extends GenericDAO<ChampionshipSubscribe, Long> {
 

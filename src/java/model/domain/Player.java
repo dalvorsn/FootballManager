@@ -21,7 +21,7 @@ import model.domain.e.ESoccerPosition;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 @Entity
 @Table(name = "players")

@@ -12,7 +12,7 @@ import javax.persistence.EntityTransaction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public abstract class GenericDAO<C, K> {
 

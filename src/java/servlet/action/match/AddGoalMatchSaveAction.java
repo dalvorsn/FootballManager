@@ -19,7 +19,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class AddGoalMatchSaveAction implements IAction {
 

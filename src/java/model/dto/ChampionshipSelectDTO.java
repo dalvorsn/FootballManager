@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class ChampionshipSelectDTO implements Serializable {
     private Long id;

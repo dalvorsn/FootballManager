@@ -24,7 +24,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class EditChampionshipViewAction implements IAction {
 

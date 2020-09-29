@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 @Entity
 @Table(name = "matchs")

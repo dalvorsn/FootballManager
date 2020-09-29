@@ -17,7 +17,7 @@ import model.dto.TopScorerDTO;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class ChampionshipDAO extends GenericDAO<Championship, Long> {
 

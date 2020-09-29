@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 @WebServlet(name = "Proxy", urlPatterns = {"/Proxy"})
 public class Proxy extends HttpServlet {

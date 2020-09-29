@@ -13,7 +13,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class EditChampionshipSaveAction implements IAction {
 

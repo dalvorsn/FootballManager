@@ -50,7 +50,7 @@ import servlet.action.view.team.TeamsViewAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 @WebServlet(name = "Router", urlPatterns = {"/router"})
 public class Router extends HttpServlet {

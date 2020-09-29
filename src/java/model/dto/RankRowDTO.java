@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class RankRowDTO implements Serializable, Comparable {
     private String name;

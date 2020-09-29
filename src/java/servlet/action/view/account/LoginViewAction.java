@@ -12,7 +12,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class LoginViewAction implements IAction {
 

@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class ChampionshipDTO implements Serializable {
     private Long id;

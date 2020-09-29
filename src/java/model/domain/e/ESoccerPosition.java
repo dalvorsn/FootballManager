@@ -7,7 +7,7 @@ package model.domain.e;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public enum ESoccerPosition {
     Goalkeeper,

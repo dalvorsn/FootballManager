@@ -16,7 +16,7 @@ import model.dao.util.Connection;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 @WebServlet(name = "ConnectionTest", urlPatterns = {"/ConnectionTest"})
 public class ConnectionTest extends HttpServlet {

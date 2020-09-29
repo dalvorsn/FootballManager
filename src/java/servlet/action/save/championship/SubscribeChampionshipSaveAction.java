@@ -18,7 +18,7 @@ import servlet.action.view.championship.ChampionshipsViewAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class SubscribeChampionshipSaveAction implements IAction {
 

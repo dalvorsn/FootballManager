@@ -26,7 +26,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class RankViewAction implements IAction {
 

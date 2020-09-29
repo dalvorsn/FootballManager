@@ -12,7 +12,7 @@ import servlet.action.view.account.LoginViewAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class LogoutAction implements IAction {
 

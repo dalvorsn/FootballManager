@@ -18,7 +18,7 @@ import servlet.action.IAction;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class ChampionshipsViewAction implements IAction {
 

@@ -14,7 +14,7 @@ import model.domain.Match;
 
 /**
  *
- * @author dalvo
+ * @author luciano
  */
 public class MatchDAO extends GenericDAO<Match, Long> {
 
